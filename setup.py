@@ -1,16 +1,25 @@
 #!/usr/bin/env python
-
-"""The setup script."""
+import pathlib
+import pkg_resources
+"""
+The setup script.
+usage: python setup.py install
+"""
 
 from setuptools import setup, find_packages
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
 
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+with pathlib.Path('requirements.txt').open() as requirements_txt:
+    requirements = [
+        str(requirement)
+        for requirement
+        in pkg_resources.parse_requirements(requirements_txt)
+    ]
 
 test_requirements = ['pytest>=3', ]
 
