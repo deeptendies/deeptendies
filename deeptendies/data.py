@@ -5,10 +5,9 @@ import pandas as pd
 import json
 from datetime import date
 from pandas_datareader import data as pdr
+pd.options.plotting.backend = "plotly"
 
 """Main module."""
-
-
 class DataFrame:
     def __init__(self, *args, **kwargs):
         yf.pdr_override()
