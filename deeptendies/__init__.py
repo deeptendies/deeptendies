@@ -8,4 +8,4 @@ __all__ = ['DataFrame', 'Feature', 'Pipeline', 'Database']
 from deeptendies.data import DataFrame
 from deeptendies.feature import Feature
 from deeptendies.pipeline import Pipeline
-from deeptendies.database import Database
+from deeptendies.backend import Database
