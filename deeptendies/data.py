@@ -1,5 +1,7 @@
 import datetime
 
+from yfinance import tickers
+
 import deeptendies
 import yfinance as yf
 import pandas as pd
@@ -8,7 +10,6 @@ from datetime import date
 from pandas_datareader import data as pdr
 
 pd.options.plotting.backend = 'plotly'
-db = deeptendies.Database()
 """Main module."""
 
 
@@ -35,6 +36,8 @@ class DataFrame:
         return df
 
     @staticmethod
-    def db_load(tickers, db=db):
+    def db_load(tickers):
+        db = deeptendies.Database()
         for t in tickers:
             deeptendies.DataFrame.from_yf(t, db=db)
+        return db.getall(tickers)
